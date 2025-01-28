@@ -58,6 +58,15 @@
     backdrop-filter: blur(8px);
   }
   
+  @media (max-width: 768px) {
+    .navbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        height: 75px;
+      }
+  }
   .navbar .container {
     display: flex;
     justify-content: space-between;
@@ -526,3 +535,13 @@
   .instagram-container:hover {
     transform: translateY(-5px);
   }
+  
+  /* Mobile View */
+  @media (max-width: 768px) {
+    .instagram-container {
+      max-height: 435px; /* Reduce width for mobile screens */
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for smaller screens */
+      border-radius: 0.5rem; /* Slightly smaller border radius */
+    }
+  }
+  
