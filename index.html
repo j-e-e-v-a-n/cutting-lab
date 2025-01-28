@@ -1,189 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Editor Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cutting Lab - Video Post-Production Studio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-    <nav>
-        <div class="nav-content">
-            <div class="logo">Editor<span>.</span></div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#instagram">Instagram</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <i data-lucide="scissors" class="logo-icon"></i>
+        <span class="logo-text">Cutting Lab</span>
+      </div>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#tools">Tools</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="fade-in">Creative Editor & Colorist</h1>
-            <p class="fade-in">Transforming vision into visual excellence</p>
-            <a href="#contact" class="cta-button fade-in">Get in Touch</a>
-        </div>
-    </section>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="video-overlay"></div>
+    <video autoplay muted loop playsinline>
+      <source src="https://player.vimeo.com/external/449623642.sd.mp4?s=ce5e9444dd6e8cc0f46284ba2a2e56fd3b6cb8a5&profile_id=164" type="video/mp4">
+    </video>
+    <div class="hero-content container">
+      <h1 class="animate-fade-in">Where Vision Meets Precision</h1>
+      <p class="animate-fade-in">Professional video post-production studio crafting compelling visual stories</p>
+      <a href="#contact" class="cta-button animate-fade-in">Start Your Project</a>
+    </div>
+  </section>
 
-    <section id="services" class="services">
-        <h2 class="section-title">Services</h2>
-        <div class="services-grid">
-            <div class="service-card scroll-animate">
-                <i class="fas fa-film"></i>
-                <h3>Video Editing</h3>
-                <p>Professional video editing with attention to detail and storytelling. Specializing in narrative flow and pacing.</p>
-            </div>
-            <div class="service-card scroll-animate">
-                <i class="fas fa-palette"></i>
-                <h3>Color Grading</h3>
-                <p>Expert color correction and grading to enhance visual appeal and create stunning cinematic looks.</p>
-            </div>
-            <div class="service-card scroll-animate">
-                <i class="fas fa-camera"></i>
-                <h3>Post Production</h3>
-                <p>Complete post-production services including sound design, visual effects, and final delivery.</p>
-            </div>
-            <div class="service-card scroll-animate">
-                <i class="fas fa-video"></i>
-                <h3>Motion Graphics</h3>
-                <p>Creative motion graphics and animations to enhance your visual content.</p>
-            </div>
-            <div class="service-card scroll-animate">
-                <i class="fas fa-photo-video"></i>
-                <h3>Visual Effects</h3>
-                <p>Stunning VFX and compositing to bring your vision to life with cutting-edge techniques.</p>
-            </div>
-            <div class="service-card scroll-animate">
-                <i class="fas fa-music"></i>
-                <h3>Sound Design</h3>
-                <p>Professional audio mixing, sound effects, and music integration for immersive experiences.</p>
-            </div>
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <i data-lucide="film"></i>
+          <h3>Video Editing</h3>
+          <p>Professional video editing with attention to detail and storytelling</p>
         </div>
-    </section>
-
-    <section id="skills" class="skills">
-        <h2 class="section-title">Software Expertise</h2>
-        <div class="skills-grid">
-            <div class="skill-item scroll-animate">
-                <img src="https://www.adobe.com/content/dam/cc/icons/premiere.svg" alt="Premiere Pro">
-                <p>Premiere Pro</p>
-                <span>Advanced Editing</span>
-            </div>
-            <div class="skill-item scroll-animate">
-                <img src="https://www.adobe.com/content/dam/cc/icons/aftereffects.svg" alt="After Effects">
-                <p>After Effects</p>
-                <span>Motion Graphics</span>
-            </div>
-            <div class="skill-item scroll-animate">
-                <img src="https://www.adobe.com/content/dam/cc/icons/photoshop.svg" alt="Photoshop">
-                <p>Photoshop</p>
-                <span>Image Editing</span>
-            </div>
-            <div class="skill-item scroll-animate">
-                <img src="https://www.adobe.com/content/dam/cc/icons/audition.svg" alt="Audition">
-                <p>Audition</p>
-                <span>Audio Editing</span>
-            </div>
+        <div class="service-card">
+          <i data-lucide="camera"></i>
+          <h3>Wedding Films</h3>
+          <p>Capturing your special moments with cinematic excellence</p>
         </div>
-    </section>
-
-    <section id="portfolio" class="portfolio">
-        <h2 class="section-title">Recent Works</h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <img src="https://picsum.photos/400/225?random=1" alt="Project 1">
-                <div class="portfolio-overlay">
-                    <h3>Commercial Project</h3>
-                    <p>Color Grading & Post Production</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://picsum.photos/400/225?random=2" alt="Project 2">
-                <div class="portfolio-overlay">
-                    <h3>Short Film</h3>
-                    <p>Video Editing & Color</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://picsum.photos/400/225?random=3" alt="Project 3">
-                <div class="portfolio-overlay">
-                    <h3>Music Video</h3>
-                    <p>Full Post Production</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://picsum.photos/400/225?random=4" alt="Project 4">
-                <div class="portfolio-overlay">
-                    <h3>Documentary</h3>
-                    <p>Editing & Color</p>
-                </div>
-            </div>
+        <div class="service-card">
+          <i data-lucide="youtube"></i>
+          <h3>YouTube Content</h3>
+          <p>Engaging content creation for your YouTube channel</p>
         </div>
-    </section>
-
-    <section id="instagram" class="instagram-feed">
-        <h2 class="section-title">Instagram Feed</h2>
-        <div class="instagram-container">
-            <!-- Replace USERNAME with your Instagram username -->
-            <iframe src="https://www.instagram.com/_v.cutz/embed" 
-                    width="100%" 
-                    height="750" 
-                    frameborder="0" 
-                    scrolling="no" 
-                    allowtransparency="true">
-            </iframe>
+        <div class="service-card">
+          <i data-lucide="instagram"></i>
+          <h3>Social Media</h3>
+          <p>Short-form video content optimized for social platforms</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section id="contact" class="contact">
-        <h2 class="section-title">Let's Work Together</h2>
-        <div class="contact-container scroll-animate">
-            <form class="contact-form">
-                <div class="form-group">
-                    <input type="text" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" placeholder="Your Email" required>
-                </div>
-                <div class="form-group">
-                    <select required>
-                        <option value="">Select Service</option>
-                        <option value="video-editing">Video Editing</option>
-                        <option value="color-grading">Color Grading</option>
-                        <option value="post-production">Post Production</option>
-                        <option value="motion-graphics">Motion Graphics</option>
-                        <option value="visual-effects">Visual Effects</option>
-                        <option value="sound-design">Sound Design</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <textarea placeholder="Tell me about your project" required></textarea>
-                </div>
-                <button type="submit" class="cta-button">Send Message</button>
-            </form>
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="portfolio">
+    <div class="container">
+      <h2>Our Work</h2>
+      <div class="portfolio-tabs">
+        <button class="tab-button active" data-tab="videos">Videos</button>
+        <button class="tab-button" data-tab="photos">Photos</button>
+      </div>
+      <div class="portfolio-grid" id="portfolioGrid"></div>
+    </div>
+  </section>
+
+  <!-- Tools Section -->
+  <section id="tools" class="tools">
+    <div class="container">
+      <h2>Our Tools</h2>
+      <div class="tools-grid">
+        <div class="tool-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Adobe_Premiere_Pro_CC_icon.svg" alt="Adobe Premiere Pro">
+          <h3>Adobe Premiere Pro</h3>
         </div>
-        <div class="social-links">
-            <a href="https://instagram.com/_v.cutz" target="_blank" class="social-button">
-                <i class="fab fa-instagram"></i> Follow on Instagram
-            </a>
-            <a href="mailto:your.email@example.com" class="social-button">
-                <i class="fas fa-envelope"></i> Email Me
-            </a>
-            <a href="https://vimeo.com/your-profile" target="_blank" class="social-button">
-                <i class="fab fa-vimeo-v"></i> View on Vimeo
-            </a>
+        <div class="tool-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Adobe_After_Effects_CC_icon.svg" alt="After Effects">
+          <h3>After Effects</h3>
         </div>
-    </section>
+        <div class="tool-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/DaVinci_Resolve_Studio.png" alt="DaVinci Resolve">
+          <h3>DaVinci Resolve</h3>
+        </div>
+        <div class="tool-card">
+          <img src="https://upload.wikimedia.org/wikipedia/en/9/9f/2015_Final_Cut_Pro_Logo.png" alt="Final Cut Pro">
+          <h3>Final Cut Pro</h3>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <p>&copy; 2024 Creative Editor Portfolio. All rights reserved.</p>
-    </footer>
+  <!-- Social Media Section -->
+  <section id="social" class="social-section">
+    <div class="container">
+      <h2 class="scale-in">Follow Us on Instagram</h2>
+      <div class="instagram-container">
+        <!-- Replace USERNAME with your Instagram username -->
+        <iframe
+          src="https://www.instagram.com/the_cuttingl_ab/embed"
+          width="100%"
+          height="750"
+          frameborder="0"
+          scrolling="no"
+          allowtransparency="true"
+        ></iframe>
+      </div>
+    </div>
+  </section>
 
-    <script src="main.js"></script>
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Get in Touch</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <i data-lucide="phone"></i>
+            <a href="tel:+919539890362">+91 9539890362</a>
+          </div>
+          <div class="contact-item">
+            <i data-lucide="mail"></i>
+            <a href="mailto:contact@cuttinglab.com">contact@cuttinglab.com</a>
+          </div>
+          <div class="contact-item">
+            <i data-lucide="instagram"></i>
+            <a href="https://instagram.com/the_cuttingl_ab" target="_blank" rel="noopener noreferrer">@cuttinglab</a>
+          </div>
+        </div>
+        <form id="contactForm" class="contact-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script src="main.js"></script>
 </body>
 </html>

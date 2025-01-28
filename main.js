@@ -1,142 +1,137 @@
-// Add header slide functionality
-let lastScrollTop = 0;
-const nav = document.querySelector('nav');
+// Initialize Lucide icons
+lucide.createIcons();
 
-window.addEventListener('scroll', () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    if (scrollTop > lastScrollTop && scrollTop > 100) {
-        nav.classList.add('nav-hidden');
-    } else {
-        nav.classList.remove('nav-hidden');
+// Portfolio Data
+const portfolioData = {
+  videos: [
+    {
+      id: 1,
+      thumbnail: "https://images.unsplash.com/photo-1536240478700-b869070f9279?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      title: "Wedding Highlights"
+    },
+    {
+      id: 2,
+      thumbnail: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      title: "Fashion Film"
+    },
+    {
+      id: 3,
+      thumbnail: "https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      title: "Corporate Video"
+    },
+    {
+      id: 4,
+      thumbnail: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      title: "Music Video"
     }
-    
-    lastScrollTop = scrollTop;
-});
+  ],
+  photos: [
+    {
+      id: 1,
+      url: "https://images.unsplash.com/photo-1718875000090-6f0e6e060d1a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      title: "Portrait Session"
+    },
+    {
+      id: 2,
+      url: "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      title: "Fashion Photography"
+    },
+    {
+      id: 3,
+      url: "https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      title: "Event Coverage"
+    },
+    {
+      id: 4,
+      url: "https://images.unsplash.com/photo-1554941829-202a0b2403b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      title: "Product Photography"
+    }
+  ]
+};
 
+// Portfolio Tabs
+const tabButtons = document.querySelectorAll('.tab-button');
+const portfolioGrid = document.getElementById('portfolioGrid');
+let activeTab = 'videos';
 
-
-// Enhanced scroll animations
-const scrollObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-});
-
-document.querySelectorAll('.scroll-animate').forEach(element => {
-    scrollObserver.observe(element);
-});
-
-// Form submission handling
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Add your form submission logic here
-        alert('Thank you for your message! I will get back to you soon.');
-        contactForm.reset();
-    });
+function updatePortfolio(type) {
+  const items = portfolioData[type];
+  portfolioGrid.innerHTML = items.map(item => `
+    <div class="portfolio-item">
+      <img src="${item[type === 'videos' ? 'thumbnail' : 'url']}" alt="${item.title}">
+      <div class="overlay">
+        <h3>${item.title}</h3>
+      </div>
+    </div>
+  `).join('');
 }
 
-// Smooth scroll for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
+tabButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const type = button.dataset.tab;
+    if (type === activeTab) return;
+
+    // Update active tab
+    tabButtons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+    activeTab = type;
+
+    // Update portfolio grid
+    updatePortfolio(type);
+  });
 });
 
-// Enhanced Intersection Observer for animations
+// Contact Form
+const contactForm = document.getElementById('contactForm');
+
+contactForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const formData = new FormData(contactForm);
+  const data = Object.fromEntries(formData);
+  console.log('Form submitted:', data);
+  // Here you would typically send the data to a server
+  contactForm.reset();
+  alert('Thank you for your message! We will get back to you soon.');
+});
+
+// Initialize portfolio grid with videos
+updatePortfolio('videos');
+
+// Enhanced Intersection Observer
 const observerOptions = {
-    threshold: 0.2,
-    rootMargin: '0px 0px -50px 0px'
+  threshold: 0.1,
+  rootMargin: '0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
-            observer.unobserve(entry.target); // Only animate once
-        }
-    });
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Add different animation classes based on element position
+      const rect = entry.target.getBoundingClientRect();
+      const windowWidth = window.innerWidth;
+      
+      if (rect.left < windowWidth / 2) {
+        entry.target.classList.add('slide-in-left');
+      } else {
+        entry.target.classList.add('slide-in-right');
+      }
+      
+      // Add scale-in animation to specific elements
+      if (entry.target.tagName === 'H2') {
+        entry.target.classList.add('scale-in');
+      }
+      
+      observer.unobserve(entry.target);
+    }
+  });
 }, observerOptions);
 
-// Observe all sections and elements that need animation
-const animatedElements = [
-    ...document.querySelectorAll('section'),
-    ...document.querySelectorAll('.service-card'),
-    ...document.querySelectorAll('.skill-item'),
-    ...document.querySelectorAll('.portfolio-item')
-];
-
-animatedElements.forEach(element => {
-    element.style.opacity = '0';
-    element.style.transform = 'translateY(30px)';
-    element.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-    observer.observe(element);
+// Observe elements for animations
+document.querySelectorAll('section, .service-card, .portfolio-item, .tool-card, h2').forEach(element => {
+  observer.observe(element);
 });
 
-// Add class for animated elements
-document.styleSheets[0].insertRule(`
-    .animate-in {
-        opacity: 1 !important;
-        transform: translateY(0) !important;
-    }
-`, 0);
-
-// Parallax effect for hero section
-const hero = document.querySelector('.hero');
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    hero.style.backgroundPosition = `50% ${scrolled * 0.5}px`;
-});
-
-// Active navigation highlight
-const navObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').substring(1) === entry.target.id) {
-                    link.classList.add('active');
-                }
-            });
-        }
-    });
-}, {
-    threshold: 0.5
-});
-
-document.querySelectorAll('section').forEach(section => {
-    navObserver.observe(section);
-});
-
-// Animate service cards on hover
-document.querySelectorAll('.service-card').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        card.querySelector('i').style.transform = 'scale(1.2) rotate(5deg)';
-    });
-    
-    card.addEventListener('mouseleave', () => {
-        card.querySelector('i').style.transform = 'scale(1) rotate(0deg)';
-    });
-});
-
-// Initialize AOS (Animate on Scroll)
-document.addEventListener('DOMContentLoaded', () => {
-    // Add smooth transition to all animated elements
-    const style = document.createElement('style');
-    style.textContent = `
-        * {
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-    `;
-    document.head.appendChild(style);
+// Add floating animation to service icons
+document.querySelectorAll('.service-card i').forEach(icon => {
+  icon.classList.add('float');
 });
